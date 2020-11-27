@@ -1,12 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "commande.h"
+#include "produit.h"
+#include "QMessageBox"
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->tableCmd->setModel(tmpcmd.afficher());
+    player = new QMediaPlayer(this);
 }
 
 MainWindow::~MainWindow()
@@ -15,15 +21,95 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_1_clicked()
-{
-    commande c;
-    c.setidcmd(ui->lineEdit_cmd1->text());
-    c.setidprod(ui->lineEdit_prod1->text());
-    c.setdateliv(ui->lineEdit_date1->text());
-    c.setidclient(ui->lineEdit_client1->text());
-    c.setdestin(ui->lineEdit_destin1->text());
 
+void MainWindow::on_pushButton_clicked()
+{
+    player->setMedia(QUrl::fromLocalFile("C:/Users/Yacyn/Desktop/validation 2/ProjektYassine/song.mp3"));
+    player->play();
+    qDebug() << player ->errorString();
+}
+
+void MainWindow::on_pb_ajouter_clicked()
+{
+    int idcmd=ui->le_idcmd->text().toInt();
+    int idprod=ui->le_idprod->text().toInt();
+    int idclient=ui->le_idclient->text().toInt();
+    QString destin=ui->le_destin->text();
+    QString dateliv=ui->le_dateliv->text();
+    commande c(idcmd,idprod,dateliv,idclient,destin);
+
+       commande a;
+       bool test = a.ajouter();
+
+       if(test)
+     {
+     QMessageBox::information(nullptr, QObject::tr("Ajouter une commande"),
+                       QObject::tr("Commande ajouté.\n"
+                                   "Click OK to continue."), QMessageBox::Ok);
+             ui->tableCmd->setModel(tmpcmd.afficher());
+
+     }
+       else
+           QMessageBox::critical(nullptr, QObject::tr("Ajouter une commande"),
+                       QObject::tr("Erreur !.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
 
+
+
+
+
+void MainWindow::on_pb_supp_clicked()
+{
+    {
+        commande s;
+        s.setidcmd(ui->le_idcmd->text().toInt());
+        bool test=s.supprimer(s.get_idcmd());
+
+        if(test)
+           {      QMessageBox::information(nullptr, QObject::tr("Supprimer une commande"),
+                                           QObject::tr("Commande supprimée.\n"
+                                                       "Click OK to continue."), QMessageBox::Ok);
+        ui->tableCmd->setModel(tmpcmd.afficher());
+
+        }
+        else
+            QMessageBox::information(nullptr, QObject::tr("Supprimer une commande"),
+                                                       QObject::tr("Erreur!.\n"
+                                                                   "Click OK to continue."), QMessageBox::Ok);
+
+    }
+
+}
+
+void MainWindow::on_pb_modif_clicked()
+{
+    int idcmd=ui->le_idcmd->text().toInt();
+    int idprod=ui->le_idprod->text().toInt();
+    int idclient=ui->le_idclient->text().toInt();
+    QString destin=ui->le_destin->text();
+    QString dateliv=ui->le_dateliv->text();
+    commande c(idcmd,idprod,dateliv,idclient,destin);
+
+       commande m;
+       bool test = m.modifier();
+
+       if(test)
+     {
+     QMessageBox::information(nullptr, QObject::tr("Modifier une commande"),
+                       QObject::tr("Commande Modifié.\n"
+                                   "Click OK to continue."), QMessageBox::Ok);
+             ui->tableCmd->setModel(tmpcmd.afficher());
+
+     }
+       else
+           QMessageBox::critical(nullptr, QObject::tr("Modifier une commande"),
+                       QObject::tr("Erreur !.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_pb_affiche_clicked()
+{
+
+}

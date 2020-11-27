@@ -3,6 +3,10 @@
 #include "commande.h"
 
 #include <QMainWindow>
+#include <QMediaPlayer>
+#include <QDebug>
+#include <QSqlQueryModel>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,9 +21,22 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_1_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pb_ajouter_clicked();
+
+    void on_pb_affiche_clicked();
+
+    void on_pb_supp_clicked();
+
+    void on_pb_modif_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QMediaPlayer* player;
+    commande tmpcmd;
+
+
 };
 #endif // MAINWINDOW_H

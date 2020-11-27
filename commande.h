@@ -1,6 +1,7 @@
 #ifndef COMMANDE_H
 #define COMMANDE_H
 #include <QString>
+#include <QSqlQueryModel>
 
 class commande
 {
@@ -18,6 +19,10 @@ public:
     QString get_dateliv();
     int get_idclient();
     QString get_destin();
+    bool ajouter();
+    QSqlQueryModel* afficher();
+    bool supprimer(int);
+    bool modifier();
 private:
     QString dateliv,destin;
     int idcmd,idprod,idclient;
