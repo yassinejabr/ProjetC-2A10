@@ -6,6 +6,8 @@
 #include <QMediaPlayer>
 #include <QDebug>
 #include <QSqlQueryModel>
+#include "qprinter.h"
+#include "qprintdialog.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -31,6 +33,8 @@ private slots:
     void on_pb_supp_clicked();
 
     void on_pb_modif_clicked();
+
+    void on_print_button1_clicked();
 
 private:
     Ui::MainWindow *ui;

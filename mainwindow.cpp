@@ -3,6 +3,9 @@
 #include "commande.h"
 #include "produit.h"
 #include "QMessageBox"
+#include <QPrinter>
+#include <QPrintDialog>
+
 
 
 
@@ -111,5 +114,16 @@ void MainWindow::on_pb_modif_clicked()
 
 void MainWindow::on_pb_affiche_clicked()
 {
+
+}
+
+void MainWindow::on_print_button1_clicked()
+{
+    QPrinter *imprimante;
+    QPrintDialog pd(this);
+    if(pd.exec()== QDialog::Rejected) return;
+    imprimante=pd.printer();
+    imprimante->setOutputFormat(QPrinter::PdfFormat);
+    imprimante->setOutputFileName("C:/Users/Yacyn/Desktop/validation 2/imprimer.pdf");
 
 }

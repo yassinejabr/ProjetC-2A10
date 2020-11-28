@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_cmd">
      <attribute name="title">
@@ -261,7 +261,7 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Liste des commandes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="print_button1">
         <property name="geometry">
          <rect>
           <x>550</x>
@@ -275,7 +275,7 @@
 </string>
         </property>
         <property name="text">
-         <string>Mail</string>
+         <string>Imprimer</string>
         </property>
        </widget>
        <widget class="QWidget" name="layoutWidget_10">
@@ -604,7 +604,7 @@ background-image: url(:/img/img.jpg);</string>
        <attribute name="title">
         <string>Liste</string>
        </attribute>
-       <widget class="QPushButton" name="pushButton_10">
+       <widget class="QPushButton" name="print_button2">
         <property name="geometry">
          <rect>
           <x>550</x>
@@ -618,7 +618,7 @@ background-image: url(:/img/img.jpg);</string>
 </string>
         </property>
         <property name="text">
-         <string>Mail</string>
+         <string>Imprimer</string>
         </property>
        </widget>
        <widget class="Line" name="line_5">
